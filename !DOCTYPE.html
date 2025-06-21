@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liderança que Transforma: Uma Jornada Interativa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F5;
+            color: #424242;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .section-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .section-card:hover {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+            transform: translateY(-5px);
+        }
+        .nav-link {
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #5C6BC0;
+        }
+        .interactive-card {
+            cursor: pointer;
+            border-left-width: 4px;
+            border-color: #E0E0E0;
+        }
+        .interactive-card.active {
+            border-color: #5C6BC0;
+            background-color: #E8EAF6;
+        }
+        .ciclo-step {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .ciclo-step:hover {
+            border-color: #FFD54F;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="font-bold text-xl md:text-2xl text-gray-800">Liderança que Transforma</h1>
+            <div class="hidden md:flex space-x-8 text-gray-600 font-semibold">
+                <a href="#chamado" class="nav-link">O Chamado</a>
+                <a href="#alicerce" class="nav-link">O Alicerce</a>
+                <a href="#estrategia" class="nav-link">A Estratégia</a>
+                <a href="#missao" class="nav-link">A Missão</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+             <a href="#chamado" class="block text-center py-2 px-4 text-gray-600 hover:bg-gray-100">O Chamado</a>
+             <a href="#alicerce" class="block text-center py-2 px-4 text-gray-600 hover:bg-gray-100">O Alicerce</a>
+             <a href="#estrategia" class="block text-center py-2 px-4 text-gray-600 hover:bg-gray-100">A Estratégia</a>
+             <a href="#missao" class="block text-center py-2 px-4 text-gray-600 hover:bg-gray-100">A Missão</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8 space-y-20">
+
+        <section id="chamado" class="text-center pt-12 md:pt-16">
+            <h2 class="text-4xl md:text-5xl font-black text-gray-800 leading-tight">Um Chamado Urgente para uma Geração em Crise</h2>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Liderar jovens hoje transcendeu a organização de eventos. Tornou-se uma frente de batalha estratégica pela saúde mental, identidade e propósito de uma geração. Os dados revelam a profundidade do desafio em nossa própria cidade.</p>
+            
+            <div class="mt-12 section-card p-6 md:p-8 max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold text-gray-800">O Paradoxo Digital em Montes Claros</h3>
+                <p class="mt-2 text-gray-500">A juventude está imersa no mundo digital, mas a que custo? Uma pesquisa local com estudantes revelou um cenário alarmante sobre a dependência da internet.</p>
+                <div class="chart-container mt-6">
+                    <canvas id="digitalAddictionChart"></canvas>
+                </div>
+                <p class="mt-6 text-sm text-gray-500">Este "êxodo digital" não é apenas uma preferência tecnológica, mas um sintoma da falta de espaços de lazer e convivência seguros no mundo físico, expondo os jovens a riscos de ansiedade e depressão.</p>
+            </div>
+        </section>
+
+        <section id="alicerce" class="py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-black text-gray-800">O Alicerce do Líder: Autoliderança e Saúde</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Toda liderança eficaz começa de dentro para fora. Antes de guiar outros, o líder precisa governar seu próprio mundo interior e cultivar ritmos de graça para uma jornada sustentável.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="section-card p-6">
+                    <h3 class="font-bold text-xl text-gray-800">Diagnóstico 360°</h3>
+                    <p class="text-gray-600 mt-2 mb-4">Comece com uma avaliação honesta da sua saúde pessoal. Onde você está forte? Onde precisa crescer? Use esta ferramenta como ponto de partida para seu Plano de Desenvolvimento Individual (PDI).</p>
+                    <div class="space-y-3 text-sm">
+                        <p><strong>Área Espiritual:</strong> Vida de oração, estudo da Palavra, sensibilidade ao Espírito.</p>
+                        <p><strong>Área Emocional:</strong> Autoconsciência, gestão de estresse, resiliência.</p>
+                        <p><strong>Área Física:</strong> Sono, alimentação, exercício físico.</p>
+                        <p><strong>Área Relacional:</strong> Família, amizades saudáveis, mentoria, cuidado com liderados.</p>
+                    </div>
+                </div>
+                <div class="section-card p-6">
+                    <h3 class="font-bold text-xl text-gray-800">Mapa do Esgotamento (Burnout)</h3>
+                    <p class="text-gray-600 mt-2 mb-4">O burnout é um inimigo silencioso no ministério. Aprenda a reconhecer os sinais e a agir preventivamente.</p>
+                     <div class="space-y-3 text-sm">
+                        <p><strong>Sinais Precoces:</strong> Cansaço persistente, irritabilidade, perda de entusiasmo.</p>
+                        <p><strong>Sinais Intermediários:</strong> Cinismo, distanciamento emocional, queda na produtividade.</p>
+                        <p><strong>Sinais Avançados:</strong> Exaustão extrema, sensação de vazio, depressão.</p>
+                        <p class="mt-4 font-semibold text-indigo-700">Lembre-se do protocolo para Elias em sua caverna: Deus primeiro cuidou do seu corpo com sono e alimento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="estrategia" class="py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-black text-gray-800">A Arquitetura da Liderança: Decisão e Estratégia</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Líderes excelentes não apenas reagem; eles antecipam, planejam e decidem com sabedoria. A qualidade da sua liderança é determinada pela qualidade das suas decisões.</p>
+            </div>
+            
+            <div class="section-card p-6 md:p-8">
+                 <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">O Ciclo da Decisão Sábia</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 text-center">
+                    <div class="ciclo-step p-4 rounded-lg">
+                        <p class="text-4xl">🙏</p>
+                        <h4 class="font-bold mt-2">1. Oração</h4>
+                        <p class="text-sm text-gray-500">Buscar a mente de Cristo.</p>
+                    </div>
+                     <div class="ciclo-step p-4 rounded-lg">
+                        <p class="text-4xl">📊</p>
+                        <h4 class="font-bold mt-2">2. Informação</h4>
+                        <p class="text-sm text-gray-500">Coletar dados e fatos.</p>
+                    </div>
+                     <div class="ciclo-step p-4 rounded-lg">
+                        <p class="text-4xl">🤝</p>
+                        <h4 class="font-bold mt-2">3. Conselho</h4>
+                        <p class="text-sm text-gray-500">Ouvir vozes sábias.</p>
+                    </div>
+                    <div class="ciclo-step p-4 rounded-lg">
+                        <p class="text-4xl">🧭</p>
+                        <h4 class="font-bold mt-2">4. Alinhamento</h4>
+                        <p class="text-sm text-gray-500">Verificar com a Palavra e a Visão.</p>
+                    </div>
+                    <div class="ciclo-step p-4 rounded-lg">
+                        <p class="text-4xl">🚀</p>
+                        <h4 class="font-bold mt-2">5. Ação</h4>
+                        <p class="text-sm text-gray-500">Executar com fé e coragem.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="missao" class="py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-black text-gray-800">A Missão em Foco: Santuário, Academia e Agência</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Um ministério de jovens eficaz responde de forma holística às necessidades da juventude. Ele deve ser, simultaneamente, um lugar de cura, de formação e de envio. Clique nos pilares para explorar.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div id="card-santuario" class="section-card p-6 interactive-card">
+                    <h3 class="font-bold text-xl text-gray-800 flex items-center"><span class="text-3xl mr-3">🛡️</span> Santuário</h3>
+                    <p class="text-gray-600 mt-2">Um refúgio seguro para as dores internas.</p>
+                </div>
+                <div id="card-academia" class="section-card p-6 interactive-card">
+                    <h3 class="font-bold text-xl text-gray-800 flex items-center"><span class="text-3xl mr-3">🎓</span> Academia</h3>
+                    <p class="text-gray-600 mt-2">Um centro de formação de cosmovisão bíblica.</p>
+                </div>
+                <div id="card-agencia" class="section-card p-6 interactive-card">
+                    <h3 class="font-bold text-xl text-gray-800 flex items-center"><span class="text-3xl mr-3">🚀</span> Agência</h3>
+                    <p class="text-gray-600 mt-2">Uma plataforma de capacitação para o impacto externo.</p>
+                </div>
+            </div>
+            
+            <div id="details-box" class="mt-8 section-card p-6 md:p-8 bg-indigo-50 min-h-[200px] flex items-center justify-center transition-opacity duration-500 opacity-0">
+                <p id="details-text" class="text-center text-indigo-800 text-lg"></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto p-6 text-center text-sm">
+            <p>&copy; 2025 Liderança que Transforma. Conteúdo inspirado no Guia de Treinamento para Líderes de Juventude.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+
+            const digitalAddictionData = {
+                labels: ['Uso Saudável', 'Uso Problemático', 'Viciados'],
+                datasets: [{
+                    label: 'Uso de Internet por Estudantes em Montes Claros',
+                    data: [47.7, 46.0, 6.3],
+                    backgroundColor: [
+                        '#81C784',
+                        '#FFD54F',
+                        '#E57373'
+                    ],
+                    borderColor: '#F5F5F5',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            };
+
+            const digitalAddictionConfig = {
+                type: 'doughnut',
+                data: digitalAddictionData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#424242',
+                                font: { family: "'Inter', sans-serif", size: 14 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: { title: tooltipTitleCallback },
+                            titleFont: { family: "'Inter', sans-serif" },
+                            bodyFont: { family: "'Inter', sans-serif" },
+                            backgroundColor: '#424242',
+                            titleColor: '#FFFFFF',
+                            bodyColor: '#FFFFFF',
+                            padding: 10,
+                            cornerRadius: 4
+                        }
+                    }
+                }
+            };
+
+            const digitalAddictionChart = new Chart(
+                document.getElementById('digitalAddictionChart'),
+                digitalAddictionConfig
+            );
+
+            const cards = {
+                santuario: {
+                    element: document.getElementById('card-santuario'),
+                    text: 'Aqui, criamos um ambiente de acolhimento e segurança para lidar com a crise de saúde mental. É o espaço para rodas de conversa, aconselhamento e para desmistificar a busca por ajuda profissional, sendo a igreja o lugar mais seguro do mundo para quem sofre.'
+                },
+                academia: {
+                    element: document.getElementById('card-academia'),
+                    text: 'Neste pilar, equipamos os jovens com uma base bíblica sólida para navegar questões complexas de identidade e cultura. É o lugar do discipulado, do estudo da Palavra e da formação de uma cosmovisão cristã que resiste às pressões do mundo.'
+                },
+                agencia: {
+                    element: document.getElementById('card-agencia'),
+                    text: 'Aqui, transformamos a fé em ação. Respondemos às vulnerabilidades sociais da nossa cidade, capacitando os jovens para serem agentes de transformação através de projetos de impacto, qualificação profissional e serviço comunitário.'
+                }
+            };
+            const detailsBox = document.getElementById('details-box');
+            const detailsText = document.getElementById('details-text');
+            let activeCard = null;
+
+            Object.keys(cards).forEach(key => {
+                const cardInfo = cards[key];
+                cardInfo.element.addEventListener('click', () => {
+                    if (activeCard === key) {
+                        detailsBox.style.opacity = '0';
+                        cardInfo.element.classList.remove('active');
+                        activeCard = null;
+                        setTimeout(() => {
+                            detailsText.textContent = '';
+                        }, 500);
+                    } else {
+                        detailsBox.style.opacity = '0';
+                        if(activeCard) cards[activeCard].element.classList.remove('active');
+
+                        setTimeout(() => {
+                            detailsText.textContent = cardInfo.text;
+                            detailsBox.style.opacity = '1';
+                            cardInfo.element.classList.add('active');
+                            activeCard = key;
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
